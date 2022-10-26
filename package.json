@@ -70,10 +70,10 @@
     "url": "git+https://github.com/reactjs/reactjs.org.git"
   },
   "scripts": {
-    "build": "gatsby clean && gatsby build",
+    "build": "node api.js && gatsby clean && gatsby build",
     "check-all": "npm-run-all prettier generate-ids --parallel lint flow",
     "ci-check": "npm-run-all prettier:diff --parallel lint flow",
-    "dev": "gatsby develop -H 0.0.0.0",
+    "dev": "node api.js && gatsby develop -H 0.0.0.0",
     "flow": "flow",
     "format:source": "prettier --config .prettierrc --write \"{gatsby-*.js,{flow-typed,plugins,src}/**/*.js}\"",
     "format:examples": "prettier --config examples/.prettierrc --write \"examples/**/*.js\"",
@@ -85,7 +85,7 @@
     "prettier": "yarn format:source && yarn format:examples",
     "prettier:diff": "yarn nit:source && yarn nit:examples",
     "reset": "rimraf ./.cache",
-    "start": "yarn dev"
+    "start": "node api.js && yarn dev"
   },
   "devDependencies": {
     "@babel/preset-flow": "^7.0.0",
