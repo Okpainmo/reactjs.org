@@ -5,8 +5,8 @@
   "license": "CC",
   "scripts": {
     "analyze": "ANALYZE=true next build",
-    "dev": "next-remote-watch ./src/content",
-    "build": "next build && node ./scripts/generateRSS.js && node ./scripts/generateRedirects.js && node ./scripts/downloadFonts.js",
+    "dev": "node init && next-remote-watch ./src/content",
+    "build": "node init && next build && node ./scripts/generateRSS.js && node ./scripts/generateRedirects.js && node ./scripts/downloadFonts.js",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "format:source": "prettier --config .prettierrc --write \"{plugins,src}/**/*.{js,ts,jsx,tsx,css}\"",
@@ -17,7 +17,7 @@
     "fix-headings": "node scripts/headingIdLinter.js --fix",
     "ci-check": "npm-run-all prettier:diff --parallel lint tsc lint-heading-ids",
     "tsc": "tsc --noEmit",
-    "start": "next start",
+    "start": "node init && next start",
     "postinstall": "patch-package && (is-ci || (cd .. && husky install beta/.husky))",
     "check-all": "npm-run-all prettier lint:fix tsc"
   },
